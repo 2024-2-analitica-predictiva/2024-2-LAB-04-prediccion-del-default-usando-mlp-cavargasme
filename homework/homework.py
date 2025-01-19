@@ -206,17 +206,17 @@ custom_scorer = make_scorer(custom_scorer, greater_is_better=True)
 
 def optimize_hyperparameters(pipeline, x_train, y_train):
     param_grid = {
-        'pca__n_components': [20],
+        'pca__n_components': [None],
         'select_k_best__k': [20],
         'model__hidden_layer_sizes': [(51, 31, 41)],
-        'model__activation': ['relu'],
-        'model__solver': ['adam'],
-        'model__alpha': [0.353],
+        # 'model__activation': ['relu'],
+        # 'model__solver': ['adam'],
+        'model__alpha': [0.26],
 
-        'model__learning_rate_init': [0.0005],
+        'model__learning_rate_init': [0.001],
     }
     
-    grid_search=GridSearchCV(pipeline, param_grid, cv=10, scoring='balanced_accuracy', verbose=1, n_jobs=-1)
+    grid_search=GridSearchCV(pipeline, param_grid, cv=10, scoring='balanced_accuracy', n_jobs=-1)
     grid_search.fit(x_train, y_train)
     
     with mlflow.start_run():
