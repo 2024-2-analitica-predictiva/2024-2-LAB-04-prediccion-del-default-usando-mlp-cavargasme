@@ -208,7 +208,7 @@ def optimize_hyperparameters(pipeline, x_train, y_train):
     param_grid = {
         'pca__n_components': [20],
         'select_k_best__k': [20],
-        'model__hidden_layer_sizes': [(35, 35, 30, 30, 30,30,30,30)],
+        'model__hidden_layer_sizes': [(51, 31, 41)],
         'model__activation': ['relu'],
         'model__solver': ['adam'],
         'model__alpha': [0.353],
